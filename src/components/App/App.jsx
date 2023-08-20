@@ -45,6 +45,17 @@ function App () {
       console.log(err);
     })
   }
+
+  const toggleTask = (id) => {
+    axios.put(`/todo/toggle/${id}`)
+    .then((response) => {
+      console.log(response);
+      fetchChecklist();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   
   useEffect( () => {
     fetchChecklist();
@@ -68,6 +79,7 @@ function App () {
       <ul>
         {toDoList.map(toDO =>
           (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.
+          <button onClick={() => toggleTask(toDO.id)}>Completed</button>
           <button onClick={() => deleteTask(toDO.id)}>Remove</button></li>)
           )}
       </ul>

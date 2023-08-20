@@ -32,7 +32,20 @@ router.post('/', (req, res) => {
         })
 })
 
-// PUT
+// PUT done modifier on task
+router.put('/toggle/:id', (req, res) => {
+    let { id } = req.params;
+    const sqlText = `UPDATE "checklist" SET "done" = NOT "done" WHERE "id" = $1;`;
+    pool.query(sqlText, [id])
+        .then((result) => {
+            console.log(`Returned from database`, result);
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log(`Error updating database ${sqlText}`, err);
+            res.sendStatus(500);
+        })
+})
 
 // DELETE from checklist
 router.delete('/:id', (req, res) => {
