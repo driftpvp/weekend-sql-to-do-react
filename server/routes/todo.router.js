@@ -18,12 +18,12 @@ router.get('/', (req, res) => {
 })
 // POST new row to checklist
 router.post('/', (req, res) => {
-    const toDO = req.body;
+    const checklist = req.body;
     const sqlText = `INSERT INTO "checklist" (name, due, done)
                      VALUES ($1, $2, $3)`;
-    pool.quesry(sqlText, [toDo.name, toDo.due, toDo.done])
+    pool.query(sqlText, [checklist.name, checklist.due, checklist.done])
         .then((result) => {
-            console.log(`Added task to database`, toDo);
+            console.log(`Added task to database`, checklist);
             res.sendStatus(201);
         })
         .catch((err) => {

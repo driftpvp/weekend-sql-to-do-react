@@ -44,7 +44,7 @@ function App () {
       <h2>Add Task</h2>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
-        <input onChange={ (event) => setNewToDOName(event.target.value) }
+        <input onChange={ (event) => setNewToDoName(event.target.value) }
           value={newToDoName}/>
         <label>Due:</label>
         <input onChange={ (event) => setNewToDoDue(event.target.value) }
