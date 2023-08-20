@@ -34,6 +34,17 @@ function App () {
       console.log(err);
     })
   }
+
+  const deleteTask = (id) => {
+    axios.delete(`/todo/${id}`)
+    .then((response) => {
+      console.log(response);
+      fetchChecklist();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   
   useEffect( () => {
     fetchChecklist();
@@ -56,7 +67,8 @@ function App () {
       <h1>All Tasks</h1>
       <ul>
         {toDoList.map(toDO =>
-          (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.</li>)
+          (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.
+          <button onClick={() => deleteTask(toDO.id)}>Remove</button></li>)
           )}
       </ul>
     </div>
