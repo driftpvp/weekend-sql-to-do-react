@@ -1,5 +1,9 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-header {
@@ -20,4 +24,50 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+
+body {
+  margin: 0;
+  background: linear-gradient(to right, rgb(18, 5, 192), rgb(66, 162, 226));
+  color:goldenrod;
+  font-size: 20pt;
+  font-weight: 575;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+
+button {
+  border: 2px cadetblue;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 10px;
+  outline: 2pt;
+  outline-color:cadetblue;
+  background-color: rgb(250, 250, 210, 1);
+
+}
+
+button:hover,
+button:focus {
+  background-color: rgb(250, 250, 210, .65);
+}
+
+input {
+  cursor: pointer;
+  background-color: rgb(250, 250, 210, 1);
+}
+input:hover,
+input:focus {
+  background-color: rgb(250, 250, 210, .85);
+}
+
+
+h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.done {
+  text-decoration-line: line-through;
 }

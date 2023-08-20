@@ -75,14 +75,14 @@ function App () {
       </form>
       <br></br>
       <br></br>
-      <h1>All Tasks</h1>
-      <ul>
+      <h2>All Tasks</h2>
+      <ol>
         {toDoList.map(toDO =>
           (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.
           <button onClick={() => toggleTask(toDO.id)}>Completed</button>
           <button onClick={() => deleteTask(toDO.id)}>Remove</button></li>)
           )}
-      </ul>
+      </ol>
     </div>
 
   );
