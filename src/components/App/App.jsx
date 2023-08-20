@@ -6,8 +6,8 @@ import './App.css'
 function App () {
 
   const [toDoList, setToDoList] = useState([]);
-  // const [newToDoName, setNewToDoName] = useState('');
-  // const [newToDoDue, setNewToDoDue] = useState('');
+  const [newToDoName, setNewToDoName] = useState('');
+  const [newToDoDue, setNewToDoDue] = useState('');
 
   const fetchChecklist = () => {
     axios.get('/todo')
@@ -20,6 +20,20 @@ function App () {
       console.log(err);
     })
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post(`/todo`, {name: newToDoName, due: newToDoDue})
+    .then((response) => {
+      console.log(response);
+      fetchChecklist();
+      setNewToDoName('');
+      setNewToDoDue('');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   
   useEffect( () => {
     fetchChecklist();
@@ -27,10 +41,19 @@ function App () {
 
   return (
     <div className='App'>
-      <h1>To Do Checklist</h1>
+      <h2>Add Task</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input onChange={ (event) => setNewToDOName(event.target.value) }
+          value={newToDoName}/>
+        <label>Due:</label>
+        <input onChange={ (event) => setNewToDoDue(event.target.value) }
+          value={newToDoDue}/>
+        <button type="submit">Add New Task</button>
+      </form>
       <br></br>
       <br></br>
-      <h3>All Tasks</h3>
+      <h1>All Tasks</h1>
       <ul>
         {toDoList.map(toDO =>
           (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.</li>)
