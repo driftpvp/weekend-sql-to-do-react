@@ -8,6 +8,7 @@ function App () {
   const [toDoList, setToDoList] = useState([]);
   const [newToDoName, setNewToDoName] = useState('');
   const [newToDoDue, setNewToDoDue] = useState('');
+  // const [isDone, setIsDone] = useState(false)
 
   const fetchChecklist = () => {
     axios.get('/todo')
