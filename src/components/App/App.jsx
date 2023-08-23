@@ -79,7 +79,7 @@ function App () {
       <ol>
         {toDoList.map(toDO =>
           (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.
-          <button onClick={() => toggleTask(toDO.id)}>Completed</button>
+          <button onClick={() => toggleTask(toDO.id)}>Completed: {JSON.stringify(toDO.done)}</button>
           <button onClick={() => deleteTask(toDO.id)}>Remove</button></li>)
           )}
       </ol>
