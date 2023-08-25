@@ -79,7 +79,8 @@ function App () {
       <h2>All Tasks</h2>
       <ol>
         {toDoList.map(toDO =>
-          (<li key={toDO.id}>{toDO.name} is due {toDO.due} military time.
+          (<li key={toDO.id} className = {toDO.done ? 'done': 'standard'}>{toDO.name} is due {toDO.due} military time.
+          
           <button onClick={() => toggleTask(toDO.id)}>Completed: {JSON.stringify(toDO.done)}</button>
           <button onClick={() => deleteTask(toDO.id)}>Remove</button></li>)
           )}
