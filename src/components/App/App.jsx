@@ -1,6 +1,11 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 
+//Material styling
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+//import { Search, Call } from '@mui/icons-material';
+
 import './App.css'
 
 function App () {
@@ -65,6 +70,19 @@ function App () {
   return (
     <div className='App'>
       <h2>Add Task</h2>
+      <Box
+      sx={{
+        width: 750,
+        height: 75,
+        border: '1px dashed yellow',
+        backgroundColor: 'primary.dark',
+        '&:hover': {
+          backgroundColor: 'primary.main',
+          opacity: [0.9, 0.8, 0.7],
+        },
+      }}
+      >
+      
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input onChange={ (event) => setNewToDoName(event.target.value) }
@@ -74,6 +92,7 @@ function App () {
           value={newToDoDue}/>
         <button type="submit">Add New Task</button>
       </form>
+      </Box>
       <br></br>
       <br></br>
       <h2>All Tasks</h2>
